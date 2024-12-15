@@ -1,0 +1,27 @@
+{
+  "name": "webscraping",
+  "scripts": {
+    "start": "node oldserv2.js"
+},
+  "version": "1.0.0",
+  "main": "webs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "node-fetch": "^2.7.0",
+    "puppeteer": "^23.10.4",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "request-promise": "^4.2.6"
+  }
+}
