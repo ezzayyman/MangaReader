@@ -1,97 +1,105 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Manga Reader
 
-# Getting Started
+A mobile application built with React Native for reading manga online and offline.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+<details>
+  <summary><b>Here are some screenshots of the app.</b></summary>
+  <br>
+  <p align="center">
+    <img src="assets/1.jpeg" width="30%">
+    <img src="assets/2.jpeg" width="30%">
+    <img src="assets/3.jpeg" width="30%">
+    <img src="assets/4.jpeg" width="30%">
+    <img src="assets/5.jpeg" width="30%">
+    <img src="assets/6.jpeg" width="30%">
+    <img src="assets/7.jpeg" width="30%">
+    <img src="assets/8.jpeg" width="30%">
+    <img src="assets/9.jpeg" width="30%">
+    <img src="assets/10.jpeg" width="30%">
+    <img src="assets/11.jpeg" width="30%">
+  </p>
+</details>
 
-## Step 1: Start Metro
+## Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **Discover & Search**: Browse through a vast catalog of manga and search for your favorites.
+- **Library Management**: Keep track of the manga you are currently reading.
+- **Offline Reading**: Download chapters to your device and read them anywhere, even without an internet connection.
+- **Customizable Settings**: Adjust the reading experience to your liking.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Tech Stack & Libraries
 
-```sh
-# Using npm
-npm start
+This project is built using modern mobile development tools to ensure performance and a smooth user experience.
 
-# OR using Yarn
-yarn start
-```
+**Core Technology:**
+- **[React Native](https://reactnative.dev/) & [React](https://react.dev/)**
+- **TypeScript**
 
-## Step 2: Build and run your app
+**Key Libraries:**
+- **Navigation**: [`React Navigation`](https://reactnavigation.org/) provides smooth stack navigation across the app.
+- **Networking**: [`axios`](https://axios-http.com/) is used to fetch manga data and chapters from external sources.
+- **Offline Storage**: [`react-native-fs`](https://github.com/itinance/react-native-fs) manages the device file system to save downloaded manga chapters for offline reading.
+- **Image Rendering**: [`react-native-fast-image`](https://github.com/DylanVann/react-native-fast-image) provides high-performance image caching, which is critical for reading manga seamlessly.
+- **Connectivity**: [`@react-native-community/netinfo`](https://github.com/react-native-netinfo/react-native-netinfo) detects internet connection changes to toggle between online and offline modes.
+- **UI Components**: Employs [`react-native-vector-icons`](https://github.com/oblador/react-native-vector-icons), [`react-native-linear-gradient`](https://github.com/react-native-linear-gradient/react-native-linear-gradient), and others for a polished interface.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## How It Works
 
-### Android
+1. **Data Fetching**: The app retrieves manga metadata and chapter images via network requests using `axios`.
+2. **Reading Experience**: Chapters are displayed in a smooth scrollable list using `react-native-fast-image` to ensure that pages load quickly and are cached effectively.
+3. **Offline Downloads**: When a user chooses to download a chapter, the `downloadManager.ts` utilizes `react-native-fs` to save the raw image files directly to the device's local storage.
+4. **Network Awareness**: By listening to `netinfo`, the app knows when you are offline and seamlessly redirects reading requests to your locally downloaded files instead of the web.
 
-```sh
-# Using npm
-npm run android
+## Prerequisites
 
-# OR using Yarn
-yarn android
-```
+- Node.js
+- npm or Yarn
+- React Native development environment (Android Studio / Xcode)
 
-### iOS
+## Getting Started
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+1. **Install dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+2. **Start the Metro Bundler**:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-```sh
-bundle install
-```
+3. **Run the application**:
+   - For Android:
+     ```bash
+     npm run android
+     # or
+     yarn android
+     ```
+   - For iOS (macOS only):
+     ```bash
+     cd ios
+     pod install
+     cd ..
+     npm run ios
+     # or
+     yarn ios
+     ```
 
-Then, and every time you update your native dependencies, run:
+## Project Structure
 
-```sh
-bundle exec pod install
-```
+- `App.tsx` - Main application entry point.
+- `MangaReader.tsx` - Core reading interface.
+- `ChapterList.tsx` - Displays available chapters for a manga.
+- `Library.tsx` - User's saved or favorited manga collection.
+- `Downloads.tsx` & `OfflineReader.tsx` - Interface for managing downloaded content and reading without an internet connection.
+- `Search.tsx` - Search functionality to find new manga.
+- `Settings.tsx` - App configuration and preferences.
+- `downloadManager.ts` - Logic for handling offline chapter downloads.
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## License
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is open-source and available under the MIT License.
